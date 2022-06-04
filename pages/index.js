@@ -12,6 +12,7 @@ const Home = () => {
 				align='center'
 				fontSize='24px'
 				fontFamily='saira'
+				border='primary'
 			>
 				<TabList>
 					<Tab _focus={{ borderBottom: '1px primary' }}>artworks</Tab>
