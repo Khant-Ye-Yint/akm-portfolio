@@ -17,7 +17,11 @@ const NavLink = ({ text, href }) => {
 
 const Navbar = () => {
 	return (
-		<VStack height='30vh' gap='30px'>
+		<VStack
+			height='30vh'
+			gap='30px'
+			w={{ base: '80%', md: '70%', lg: '90%', xl: '60%' }}
+		>
 			<Box w='400px' h='200px' position='relative'>
 				<Image
 					src={BrandImg}

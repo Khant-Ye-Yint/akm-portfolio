@@ -32,7 +32,9 @@ const Gallery = () => {
 					xl: 'repeat(4,1fr)',
 				}}
 				rowGap='20px'
+				columnGap='20px'
 				mt='20px'
+				autoColumns='auto'
 			>
 				{[ImgOne, ImgTwo, ImgThree, ImgFour].map((img, index) => (
 					<GridItem
