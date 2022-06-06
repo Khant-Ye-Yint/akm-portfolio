@@ -5,8 +5,8 @@ const PicCard = ({ alt, src }) => {
 	return (
 		<Box
 			position='relative'
-			h='400px'
-			w='300px'
+			h='360px'
+			w='270px'
 			borderRadius='13px'
 			overflow='hidden'
 			_hover={{ cursor: 'pointer', filter: 'grayscale(100%)' }}
