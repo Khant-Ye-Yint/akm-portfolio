@@ -13,6 +13,7 @@ const Home = () => {
 				fontSize='24px'
 				fontFamily='saira'
 				border='primary'
+				isFitted={true}
 			>
 				<TabList>
 					<Tab _focus={{ borderBottom: '1px primary' }}>artworks</Tab>

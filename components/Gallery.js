@@ -24,7 +24,15 @@ const Gallery = () => {
 
 	return (
 		<Box>
-			<Grid templateColumns='repeat(4,1fr)' rowGap='20px' mt='20px'>
+			<Grid
+				templateColumns={{
+					base: 'repeat(1,1fr)',
+					md: 'repeat(2,1fr)',
+					lg: 'repeat(4,1fr)',
+				}}
+				rowGap='20px'
+				mt='20px'
+			>
 				{[ImgOne, ImgTwo, ImgThree, ImgFour].map((img, index) => (
 					<GridItem
 						key={index}

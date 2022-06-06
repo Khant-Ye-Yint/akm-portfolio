@@ -8,13 +8,14 @@ const Layout = ({ label, children }) => {
 		<VStack
 			minH='100vh'
 			justifyContent='space-between'
-			px='300px'
+			px={{ base: '20px', md: '50px', lg: '300px' }}
 			gap='30px'
 			backgroundColor='background'
+			py='30px'
 		>
 			<Navbar />
 			<Box
-				fontSize='48px'
+				fontSize='44px'
 				fontWeight='bold'
 				fontFamily='dosis'
 				w='full'

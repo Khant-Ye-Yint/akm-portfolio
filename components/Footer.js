@@ -1,4 +1,4 @@
-import { HStack, Box } from '@chakra-ui/react';
+import { Stack, Box } from '@chakra-ui/react';
 import Image from 'next/dist/client/image';
 import Link from 'next/dist/client/link';
 
@@ -26,7 +26,13 @@ const SocialIcon = ({ href, Icon }) => (
 
 const Footer = () => {
 	return (
-		<HStack width='100%' justifyContent='space-between'>
+		<Stack
+			width='100%'
+			flexDir={{ base: 'column', md: 'row' }}
+			justifyContent='space-between'
+			alignItems='center'
+			rowGap={{ base: '20px' }}
+		>
 			<Box width={300} height={200} position='relative'>
 				<Image
 					src={BrandImg}
@@ -41,14 +47,19 @@ const Footer = () => {
 			<Box fontFamily='saira' fontSize='20px' color='gray'>
 				2022
 			</Box>
-			<HStack gap='30px'>
+			<Stack
+				columnGap={{ base: '20px', lg: '30px' }}
+				flexDir='row'
+				justifyContent='space-between'
+				alignItems='center'
+			>
 				<SocialIcon href='#' Icon={SiKofi} />
 				<SocialIcon href='#' Icon={SiTwitter} />
 				<SocialIcon href='#' Icon={SiGmail} />
 				<SocialIcon href='#' Icon={SiInstagram} />
 				<SocialIcon href='#' Icon={SiFacebook} />
-			</HStack>
-		</HStack>
+			</Stack>
+		</Stack>
 	);
 };
 
