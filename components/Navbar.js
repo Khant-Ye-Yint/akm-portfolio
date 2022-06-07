@@ -39,7 +39,6 @@ const Navbar = () => {
 				fontWeight='normal'
 				color='grey'
 				columnGap={['20px', '50px', '85px']}
-				flexWrap='wrap'
 				justifyContent='center'
 			>
 				<NavLink text='gallery' href='/' />

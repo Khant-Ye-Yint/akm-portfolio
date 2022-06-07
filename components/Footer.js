@@ -28,11 +28,10 @@ const Footer = () => {
 	return (
 		<Stack
 			width='100%'
-			flexDir={{ base: 'column', md: 'row' }}
+			flexDir={{ base: 'column', lg: 'row' }}
 			justifyContent='space-between'
 			alignItems='center'
 			rowGap={{ base: '20px' }}
-			w={{ base: '80%', md: '70%', lg: '90%', xl: '60%' }}
 		>
 			<Box width={300} height={200} position='relative'>
 				<Image
