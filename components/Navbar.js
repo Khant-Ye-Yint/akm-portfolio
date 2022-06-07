@@ -18,9 +18,9 @@ const NavLink = ({ text, href }) => {
 const Navbar = () => {
 	return (
 		<VStack
-			height='30vh'
-			gap='30px'
+			rowGap='20px'
 			w={{ base: '80%', md: '70%', lg: '90%', xl: '60%' }}
+			justifyContent='space-between'
 		>
 			<Box w='400px' h='200px' position='relative'>
 				<Image
@@ -39,7 +39,6 @@ const Navbar = () => {
 				fontWeight='normal'
 				color='grey'
 				columnGap={['20px', '50px', '85px']}
-				rowGap='30px'
 				flexWrap='wrap'
 				justifyContent='center'
 			>

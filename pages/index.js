@@ -12,10 +12,9 @@ const Home = () => {
 				align='center'
 				fontSize='24px'
 				fontFamily='saira'
-				border='primary'
 				isFitted={true}
 			>
-				<TabList>
+				<TabList w='0.5' border='none'>
 					<Tab _focus={{ borderBottom: '1px primary' }}>artworks</Tab>
 					<Tab _focus={{ borderBottom: '1px primary' }}>characters</Tab>
 					<Tab _focus={{ borderBottom: '1px primary' }}>commision</Tab>
