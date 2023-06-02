@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 .nav-item {
-  @apply text-black hover:text-secondary active:text-primary cursor-pointer;
+  @apply text-black cursor-pointer hover:text-secondary active:text-primary;
 }
 
 .icon {
   @apply text-2xl text-primary hover:text-secondary;
+}
+
+.tab {
+  @apply border-none cursor-pointer font-saira active:text-primary hover:text-secondary bg-background ring-0;
 }
