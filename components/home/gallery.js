@@ -3,7 +3,7 @@ import ImgTwo from '../../public/images/img2.jpeg';
 import ImgThree from '../../public/images/img3.jpeg';
 import ImgFour from '../../public/images/img4.jpeg';
 
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 const Gallery = () => {
   const imgList = [ImgOne, ImgTwo, ImgThree, ImgFour];
