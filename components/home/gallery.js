@@ -5,8 +5,13 @@ import ImgFour from '../../public/images/img4.jpeg';
 
 import Image from 'next/legacy/image';
 
-const Gallery = () => {
+const Gallery = ({ setCarouselIndex, setShowCarousel }) => {
   const imgList = [ImgOne, ImgTwo, ImgThree, ImgFour];
+
+  const clickHandler = (index) => {
+    setShowCarousel(true);
+    setCarouselIndex(index);
+  };
 
   return (
     <div className="grid grid-cols-2 gap-4 mt-5 md:grid-cols-3 lg:grid-cols-4">
@@ -15,6 +20,7 @@ const Gallery = () => {
           <div
             className="h-[250px] md:h-[350px] lg:h-[400px] relative rounded-lg overflow-hidden hover:grayscale transition duration-1000 ease-out cursor-pointer"
             key={index}
+            onClick={() => clickHandler(index)}
           >
             <Image
               src={img}

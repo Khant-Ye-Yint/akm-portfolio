@@ -4,11 +4,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useState } from 'react';
 
 import Gallery from '@/components/home/gallery';
+import ImageCarousel from '@/components/home/imageCarousel';
 
 const Home = () => {
   const [tabIndex, setTabIndex] = useState(0);
+  const [showCarousel, setShowCarousel] = useState(true);
+  const [carouselIndex, setCarouselIndex] = useState(0);
 
-  const categories = ['artwork', 'characters', 'comission', 'portrait'];
+  const categories = ['artworks', 'characters', 'comission', 'portrait'];
 
   return (
     <main className="container flex-1">
@@ -41,11 +44,20 @@ const Home = () => {
         {categories.map((category, index) => {
           return (
             <TabPanel key={index}>
-              <Gallery />
+              <Gallery
+                setCarouselIndex={setCarouselIndex}
+                setShowCarousel={setShowCarousel}
+              />
             </TabPanel>
           );
         })}
       </Tabs>
+      <ImageCarousel
+        showCarousel={showCarousel}
+        setShowCarousel={setShowCarousel}
+        carouselIndex={carouselIndex}
+        setCarouselIndex={setCarouselIndex}
+      />
     </main>
   );
 };

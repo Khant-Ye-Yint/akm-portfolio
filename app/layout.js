@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 import 'react-tabs/style/react-tabs.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export const metadata = {
   title: 'Aung Khant Maw',
