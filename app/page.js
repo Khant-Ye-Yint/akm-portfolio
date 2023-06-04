@@ -8,7 +8,7 @@ import ImageCarousel from '@/components/home/imageCarousel';
 
 const Home = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [showCarousel, setShowCarousel] = useState(true);
+  const [showCarousel, setShowCarousel] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   const categories = ['artworks', 'characters', 'comission', 'portrait'];
