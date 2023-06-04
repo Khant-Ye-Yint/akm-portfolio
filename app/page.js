@@ -3,8 +3,8 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useState } from 'react';
 
-import Gallery from '@/components/home/gallery';
-import ImageCarousel from '@/components/home/imageCarousel';
+import Gallery from './components/gallery';
+import ImageCarousel from './components/imageCarousel';
 
 const Home = () => {
   const [tabIndex, setTabIndex] = useState(0);

@@ -14,7 +14,7 @@ const Gallery = ({ setCarouselIndex, setShowCarousel }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 mt-5 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 mt-5 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
       {imgList.map((img, index) => {
         return (
           <div

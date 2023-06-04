@@ -3,8 +3,8 @@ import './globals.css';
 import '@fontsource/saira';
 import '@fontsource/dosis';
 
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 import 'react-tabs/style/react-tabs.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';

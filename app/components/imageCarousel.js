@@ -6,12 +6,8 @@ import ImageTwo from '../../public/images/img2.jpeg';
 import ImageThree from '../../public/images/img3.jpeg';
 import ImageFour from '../../public/images/img4.jpeg';
 
-import {
-  MdArrowForwardIos,
-  MdArrowBackIos,
-  MdClose,
-  MdPhoto,
-} from 'react-icons/md';
+import { MdArrowForwardIos, MdArrowBackIos, MdCircle } from 'react-icons/md';
+import { RiCloseCircleLine } from 'react-icons/ri';
 
 import Image from 'next/legacy/image';
 
@@ -33,16 +29,16 @@ const ImageCarousel = ({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            transition={{ ease: 'linear', duration: 0.5 }}
+            initial={{ opacity: 0, scaleY: 0.3 }}
+            whileInView={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0.5 }}
+            transition={{ ease: 'linear', duration: 0.3 }}
           >
             <div
-              className="absolute z-30 text-4xl cursor-pointer top-5 right-5 text-primary hover:text-secondary"
+              className="absolute z-30 text-4xl font-bold bg-black rounded-full cursor-pointer text-background top-5 right-5 hover:text-secondary"
               onClick={() => setShowCarousel(false)}
             >
-              <MdClose />
+              <RiCloseCircleLine />
             </div>
             <Carousel
               onChange={(index) => setCarouselIndex(index)}
@@ -78,7 +74,7 @@ const ImageCarousel = ({
                       style={{ display: 'inline-block' }}
                     >
                       <div className="text-primary">
-                        <MdPhoto size={20} />
+                        <MdCircle size={15} />
                       </div>
                     </li>
                   );
@@ -96,7 +92,7 @@ const ImageCarousel = ({
                     style={{ display: 'inline-block' }}
                     className="text-black"
                   >
-                    <MdPhoto size={20} />
+                    <MdCircle size={15} />
                   </li>
                 );
               }}
