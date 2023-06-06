@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 
 import 'react-tabs/style/react-tabs.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: 'Aung Khant Maw',

@@ -13,3 +13,15 @@
 .tab {
   @apply border-none cursor-pointer font-saira active:text-primary hover:text-secondary bg-background ring-0;
 }
+
+.input {
+  @apply w-full px-2 text-xl bg-transparent border-b-2 outline-none lg:w-3/4 border-primary text-primary font-dosis;
+}
+
+.input::placeholder {
+  @apply text-gray-400
+}
+
+.form-field {
+  @apply flex flex-col items-start justify-start w-full space-y-2
+}

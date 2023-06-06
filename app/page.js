@@ -28,7 +28,7 @@ const Home = () => {
             return (
               <Tab className="tab" key={index}>
                 <span
-                  className={`bg-background ${
+                  className={`bg-background outline-none ${
                     tabIndex == index
                       ? 'border-b-2 border-primary text-primary'
                       : 'tabs'
