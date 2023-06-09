@@ -109,7 +109,7 @@ const Contact = () => {
                 <button
                   disabled={!isValid}
                   type="submit"
-                  className={`py-1 text-lg font-bold rounded-md cursor-pointer px-7 ${
+                  className={`py-1 text-lg font-bold rounded-md cursor-pointer px-7 transition duration-150 ease-in ${
                     isValid
                       ? 'bg-primary hover:bg-secondary'
                       : 'bg-gray-500 cursor-not-allowed'

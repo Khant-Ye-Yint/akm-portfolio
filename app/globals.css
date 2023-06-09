@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .nav-item {
-  @apply text-black cursor-pointer hover:text-secondary active:text-primary;
+  @apply cursor-pointer hover:text-secondary;
 }
 
 .icon {
