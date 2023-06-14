@@ -1,6 +1,7 @@
 'use client';
 
 import { MdKeyboardArrowRight, MdCheck } from 'react-icons/md';
+import Link from 'next/link';
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -49,7 +50,7 @@ const Card = () => {
       </div>
       <button className="flex flex-row items-center justify-center py-2 mt-5 font-bold transition duration-150 ease-in rounded-md cursor-pointer text-md px-7 bg-primary text-background hover:bg-secondary">
         <MdKeyboardArrowRight className="text-2xl font-bold" />{' '}
-        <span>More details</span>
+        <Link href="/commision/portrait">More details</Link>
       </button>
     </motion.div>
   );

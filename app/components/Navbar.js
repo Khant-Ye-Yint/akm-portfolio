@@ -25,7 +25,9 @@ const Navbar = () => {
         </Link>
         <Link href="/commision">
           <nav
-            className={`nav-item ${pathname == '/commision' && 'text-primary'}`}
+            className={`nav-item ${
+              pathname.includes('/commision') && 'text-primary'
+            }`}
           >
             commision
           </nav>
