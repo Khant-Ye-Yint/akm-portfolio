@@ -39,6 +39,15 @@ const Navbar = () => {
             contact
           </nav>
         </Link>
+        <Link href="/sold-artworks">
+          <nav
+            className={`nav-item text-center ${
+              pathname.includes('/sold-artworks') && 'text-primary'
+            }`}
+          >
+            sold-artworks
+          </nav>
+        </Link>
       </div>
     </main>
   );
