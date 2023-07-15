@@ -1,21 +1,24 @@
-import ImgOne from '../../public/images/img1.jpeg';
-import ImgTwo from '../../public/images/img2.jpeg';
-import ImgThree from '../../public/images/img3.jpeg';
-import ImgFour from '../../public/images/img4.jpeg';
+'use client';
 
 import Image from 'next/legacy/image';
+import ImageCarousel from './imageCarousel';
+import { useState } from 'react';
 
-const Gallery = ({ setCarouselIndex, setShowCarousel }) => {
-  const imgList = [ImgOne, ImgTwo, ImgThree, ImgFour];
-
+const Gallery = ({ data, category }) => {
   const clickHandler = (index) => {
     setShowCarousel(true);
     setCarouselIndex(index);
   };
 
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
+  const filteredData = data.filter((item) => item.fields.category == category);
+  console.log(data);
+
   return (
     <div className="grid grid-cols-2 gap-4 mt-5 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-      {imgList.map((img, index) => {
+      {filteredData.map((img, index) => {
         return (
           <div
             className="h-[250px] md:h-[350px] lg:h-[400px] relative rounded-lg overflow-hidden hover:grayscale transition duration-1000 ease-out cursor-pointer"
@@ -23,8 +26,8 @@ const Gallery = ({ setCarouselIndex, setShowCarousel }) => {
             onClick={() => clickHandler(index)}
           >
             <Image
-              src={img}
-              alt="img1"
+              src={`http:${img.fields.image.fields.file.url}`}
+              alt={img.fields.text}
               layout="fill"
               objectFit="cover"
               objectPosition="center"
@@ -32,6 +35,13 @@ const Gallery = ({ setCarouselIndex, setShowCarousel }) => {
           </div>
         );
       })}
+      <ImageCarousel
+        showCarousel={showCarousel}
+        setShowCarousel={setShowCarousel}
+        carouselIndex={carouselIndex}
+        setCarouselIndex={setCarouselIndex}
+        data={filteredData}
+      />
     </div>
   );
 };

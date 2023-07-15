@@ -1,103 +1,47 @@
-'use client';
+import { getSpecificCommision, getCommision } from '../../util/data';
 
-import Image from 'next/legacy/image';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useState } from 'react';
-import { HiStar } from 'react-icons/hi';
+import TabContainer from '../TabContainer';
 
-import imgOne from '../../../public/images/img1.jpeg';
-import imgTwo from '../../../public/images/img2.jpeg';
-import imgThree from '../../../public/images/img3.jpeg';
+export const dynamicParams = false;
+export const revalidate = 30;
 
-const capatalize = (word) => {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+const camelCase = (str) => {
+  return str
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+      return index == 0 ? word.toLowerCase() : word.toUpperCase();
+    })
+    .replace(/\s+/g, '');
 };
 
-const List = ({ children }) => (
-  <h1 className="flex flex-row flex-wrap items-center justify-start space-x-1 text-xl font-saira">
-    <HiStar /> <span>{children}</span>
-  </h1>
-);
-// const categories = ['B&W', 'Color', 'Color and Background'];
+export async function generateStaticParams() {
+  const data = await getCommision();
 
-const categories = [
-  {
-    type: 'B&W',
-    image: imgOne,
-    services: ['Black and white color', 'Sketches'],
-  },
-  {
-    type: 'Color',
-    image: imgTwo,
-    services: ['Detail artwork', 'Colors'],
-  },
-  {
-    type: 'Color and Background',
-    image: imgThree,
-    services: ['Detail artwork', 'Colors', 'Background'],
-  },
-];
+  return data.map((chunk) => ({
+    slug: camelCase(chunk.fields.name),
+  }));
+}
 
-const Details = ({ params }) => {
+const toSentence = (str) => {
+  const result = str.replace(/([A-Z])/g, ' $1');
+
+  const final = result.charAt(0).toUpperCase() + result.slice(1);
+
+  return final;
+};
+
+const Details = async ({ params }) => {
   const { slug } = params;
-  const [tabIndex, setTabIndex] = useState(0);
 
-  const img = tabIndex == 0 ? imgOne : tabIndex == 1 ? imgTwo : imgThree;
+  const title = toSentence(slug);
+  const data = await getSpecificCommision(title);
 
-  const cappedWord = capatalize(slug);
   return (
     <main className="container flex-1">
       <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl font-dosis text-primary">
-        {cappedWord} Details.
+        {title} Details.
       </h1>
-      <div className="flex flex-col items-center justify-center w-full mt-10">
-        <div className="relative w-[300px] h-[400px] rounded-lg overflow-hidden">
-          <Image
-            src={img}
-            alt="image"
-            layout="fill"
-            objectPosition="center"
-            objectFit="cover"
-          />
-        </div>
-        <Tabs
-          className="flex flex-col items-center justify-center w-full my-5 space-y-5"
-          selectedIndex={tabIndex}
-          onSelect={(index) => setTabIndex(index)}
-        >
-          <TabList className="flex flex-row items-center justify-center space-x-3 lg:space-x-5 bg-background">
-            {categories.map((category, index) => {
-              return (
-                <Tab className="tab" key={index}>
-                  <span
-                    className={`bg-background outline-none  ${
-                      tabIndex == index
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'tabs'
-                    } `}
-                  >
-                    {category.type}
-                  </span>
-                </Tab>
-              );
-            })}
-          </TabList>
-          <div>
-            {categories.map((category, index) => {
-              return (
-                <TabPanel
-                  key={index}
-                  className="max-w-[600px] min-w-[400px] flex flex-col justify-center items-start space-y-2"
-                >
-                  {category.services.map((service, index) => {
-                    return <List key={index}>{service}</List>;
-                  })}
-                </TabPanel>
-              );
-            })}
-          </div>
-        </Tabs>
-      </div>
+
+      <TabContainer data={data} />
     </main>
   );
 };

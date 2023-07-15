@@ -11,20 +11,26 @@ const variants = {
   normal: { y: 0 },
 };
 
-const List = () => (
+const camelCase = (str) => {
+  return str
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+      return index == 0 ? word.toLowerCase() : word.toUpperCase();
+    })
+    .replace(/\s+/g, '');
+};
+
+const List = ({ data }) => (
   <div className="flex flex-row items-center self-start justify-between w-full list-none">
     <div className="w-16 ">
       <MdCheck className="flex-1 text-xl font-bold " />
     </div>
     <li>
-      <span className="text-justify whitespace-pre-wrap">
-        Lorem ipsum dolor sit amet ajfdjakfj afsdfa afadfdf adfda a
-      </span>
+      <span className="text-justify whitespace-pre-wrap">{data}</span>
     </li>
   </div>
 );
 
-const Card = () => {
+const Card = ({ data }) => {
   const [hover, setHover] = useState(false);
 
   return (
@@ -38,20 +44,21 @@ const Card = () => {
       <div className="flex flex-col items-center justify-center w-full space-y-5">
         <div className="flex flex-col items-center justify-center w-full space-y-1 ">
           <h3 className="text-4xl font-bold rounded-lg text-primary font-dosis">
-            Portrait
+            {data.fields.name}
           </h3>
           <div className="w-16 h-1 rounded-lg bg-primary"></div>
         </div>
         <div className="flex flex-col items-center justify-start w-full space-y-2">
-          <List />
-          <List />
-          <List />
+          {data.fields.availableServices.map((data, index) => (
+            <List data={data} key={index} />
+          ))}
         </div>
       </div>
-      <button className="flex flex-row items-center justify-center py-2 mt-5 font-bold transition duration-150 ease-in rounded-md cursor-pointer text-md px-7 bg-primary text-background hover:bg-secondary">
-        <MdKeyboardArrowRight className="text-2xl font-bold" />{' '}
-        <Link href="/commision/portrait">More details</Link>
-      </button>
+      <Link href={`/commision/${camelCase(data.fields.name)}`}>
+        <button className="flex flex-row items-center justify-center py-2 mt-5 font-bold transition duration-150 ease-in rounded-md cursor-pointer text-md px-7 bg-primary text-background hover:bg-secondary">
+          <MdKeyboardArrowRight className="text-2xl font-bold" /> More details
+        </button>
+      </Link>
     </motion.div>
   );
 };

@@ -1,11 +1,6 @@
 import { Carousel } from 'react-responsive-carousel';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import ImageOne from '../../public/images/img1.jpeg';
-import ImageTwo from '../../public/images/img2.jpeg';
-import ImageThree from '../../public/images/img3.jpeg';
-import ImageFour from '../../public/images/img4.jpeg';
-
 import { MdArrowForwardIos, MdArrowBackIos, MdCircle } from 'react-icons/md';
 import { RiCloseCircleLine } from 'react-icons/ri';
 
@@ -16,9 +11,8 @@ const ImageCarousel = ({
   setShowCarousel,
   carouselIndex,
   setCarouselIndex,
+  data,
 }) => {
-  const images = [ImageOne, ImageTwo, ImageThree, ImageFour];
-
   return (
     <AnimatePresence>
       {showCarousel ? (
@@ -97,12 +91,12 @@ const ImageCarousel = ({
                 );
               }}
             >
-              {images.map((img, index) => {
+              {data.map((img, index) => {
                 return (
                   <div className="relative w-full h-screen" key={index}>
                     <Image
-                      src={img}
-                      alt="imageOne"
+                      src={`http:${img.fields.image.fields.file.url}`}
+                      alt={img.fields.text}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"

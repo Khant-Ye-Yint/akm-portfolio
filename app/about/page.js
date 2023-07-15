@@ -1,6 +1,8 @@
 import Image from 'next/image';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-import Img from '../../public/images/img1.jpeg';
+import { getAbout } from '../util/data';
 
 const imageStyle = {
   borderRadius: '0.75rem',
@@ -8,7 +10,24 @@ const imageStyle = {
   border: '1px solid #fff',
 };
 
-const About = () => {
+export const revalidate = 30;
+
+const Bold = ({ children }) => <span className="font-bold">{children}</span>;
+
+const Text = ({ children }) => <p className="text-justify">{children}</p>;
+
+const options = {
+  renderMark: {
+    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+  },
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+  },
+};
+
+const About = async () => {
+  const aboutData = await getAbout();
+
   return (
     <main className="container flex-1">
       <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl font-dosis text-primary">
@@ -18,21 +37,16 @@ const About = () => {
         <div className="relative w-full flex justify-center items-center md:h-[450px] 2xl:h-[600px] md:flex-1">
           <Image
             priority
-            src={Img}
+            src={`http:${aboutData[0].fields.image.fields.file.url}`}
             alt="image"
             style={imageStyle}
             width={450}
+            height={500}
           />
         </div>
-        <p className="flex-1 text-lg text-justify xl:text-xl 2xl:text-2xl font-dosis">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <div className="flex-1 text-lg text-justify xl:text-xl 2xl:text-2xl font-dosis">
+          {documentToReactComponents(aboutData[0].fields.description, options)}
+        </div>
       </div>
     </main>
   );
