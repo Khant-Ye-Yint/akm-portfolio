@@ -1,13 +1,19 @@
-import ImgOne from '../../public/images/img1.jpeg';
-import ImgTwo from '../../public/images/img2.jpeg';
-import ImgThree from '../../public/images/img3.jpeg';
-import ImgFour from '../../public/images/img4.jpeg';
-
 import Image from 'next/legacy/image';
 import Link from 'next/link';
+import { getSoldArtworks } from '../util/data';
 
-const About = () => {
-  const imgList = [ImgOne, ImgTwo, ImgThree, ImgFour];
+export const revalidate = 30;
+
+const camelCase = (str) => {
+  return str
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+      return index == 0 ? word.toLowerCase() : word.toUpperCase();
+    })
+    .replace(/\s+/g, '');
+};
+
+const About = async () => {
+  const data = await getSoldArtworks();
 
   return (
     <main className="container flex-1">
@@ -16,13 +22,16 @@ const About = () => {
       </h1>
 
       <div className="grid w-full grid-cols-2 gap-4 mt-5 lg:mt-10 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-        {imgList.map((img, index) => {
+        {data.map((img, index) => {
           return (
-            <Link key={index} href={`sold-artworks/bitch`}>
+            <Link
+              key={index}
+              href={`sold-artworks/${camelCase(img.fields.name)}`}
+            >
               <div className="h-[250px] md:h-[350px] lg:h-[400px] relative rounded-lg overflow-hidden hover:grayscale transition duration-1000 ease-out cursor-pointer">
                 <Image
-                  src={img}
-                  alt={`img ${index}`}
+                  src={`http:${img.fields.image.fields.file.url}`}
+                  alt={img.fields.name}
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"

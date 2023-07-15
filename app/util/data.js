@@ -42,4 +42,30 @@ const getSpecificCommision = async (title) => {
   return res.items;
 };
 
-export { getGallery, getAbout, getCommision, getSpecificCommision };
+const getSoldArtworks = async () => {
+  const res = await client.getEntries({
+    content_type: 'soldArtworks',
+    order: 'sys.createdAt',
+  });
+
+  return res.items;
+};
+
+const getSoldArtworksByName = async (name) => {
+  const res = await client.getEntries({
+    content_type: 'soldArtworks',
+    order: 'sys.createdAt',
+    'fields.name': name,
+  });
+
+  return res.items;
+};
+
+export {
+  getGallery,
+  getAbout,
+  getCommision,
+  getSpecificCommision,
+  getSoldArtworks,
+  getSoldArtworksByName,
+};
