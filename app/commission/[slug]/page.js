@@ -4,6 +4,9 @@ import TabContainer from '../TabContainer';
 
 export const dynamicParams = false;
 export const revalidate = 30;
+export const metadata = {
+  title: 'Aung Khant Maw | Commission',
+};
 
 const camelCase = (str) => {
   return str

@@ -54,7 +54,7 @@ const Card = ({ data }) => {
           ))}
         </div>
       </div>
-      <Link href={`/commision/${camelCase(data.fields.name)}`}>
+      <Link href={`/commission/${camelCase(data.fields.name)}`}>
         <button className="flex flex-row items-center justify-center py-2 mt-5 font-bold transition duration-150 ease-in rounded-md cursor-pointer text-md px-7 bg-primary text-background hover:bg-secondary">
           <MdKeyboardArrowRight className="text-2xl font-bold" /> More details
         </button>

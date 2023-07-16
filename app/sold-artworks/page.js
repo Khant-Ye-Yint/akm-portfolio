@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { getSoldArtworks } from '../util/data';
 
 export const revalidate = 30;
+export const metadata = {
+  title: 'Aung Khant Maw | Sold Artworks',
+};
 
 const camelCase = (str) => {
   return str

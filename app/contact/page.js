@@ -3,6 +3,9 @@ import Img from '../../public/images/img3.jpeg';
 import FormComponent from './FormComponent';
 
 export const revalidate = 0;
+export const metadata = {
+  title: 'Aung Khant Maw | Contact',
+};
 
 const imageStyle = {
   borderRadius: '0.75rem',

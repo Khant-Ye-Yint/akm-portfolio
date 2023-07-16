@@ -11,6 +11,9 @@ const imageStyle = {
 };
 
 export const revalidate = 30;
+export const metadata = {
+  title: 'Aung Khant Maw | About',
+};
 
 const Bold = ({ children }) => <span className="font-bold">{children}</span>;
 

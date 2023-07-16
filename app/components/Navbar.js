@@ -23,13 +23,13 @@ const Navbar = () => {
             about
           </nav>
         </Link>
-        <Link href="/commision">
+        <Link href="/commission">
           <nav
             className={`nav-item ${
-              pathname.includes('/commision') && 'text-primary'
+              pathname.includes('/commission') && 'text-primary'
             }`}
           >
-            commision
+            commission
           </nav>
         </Link>
         <Link href="/contact">

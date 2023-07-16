@@ -2,6 +2,9 @@ import { getGallery } from './util/data';
 import TabContainer from './components/TabContainer';
 
 export const revalidate = 30;
+export const metadata = {
+  title: 'Aung Khant Maw',
+};
 
 const Home = async () => {
   const data = await getGallery();
