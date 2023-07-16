@@ -12,7 +12,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: 'Aung Khant Maw',
-  description: 'Welcome to my portfolio website.',
+  description:
+    "Welcome to my portfolio website. I'm Aung Khant Maw, a professional digital artist.",
+  keywords: [
+    'Aung Khant Maw',
+    'Digital Arts',
+    'Artist',
+    'Illustration',
+    'Myanmar',
+    'Dreamverse',
+  ],
 };
 
 export default function RootLayout({ children }) {
