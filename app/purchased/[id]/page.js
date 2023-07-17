@@ -2,19 +2,11 @@ import Image from 'next/image';
 import { getSoldArtworks, getSoldArtworksById } from '../../util/data';
 import moment from 'moment';
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 export const revalidate = 30;
 export const metadata = {
   title: 'z3uzy | Purchased',
 };
-
-// const camelCase = (str) => {
-//   return str
-//     .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-//       return index == 0 ? word.toLowerCase() : word.toUpperCase();
-//     })
-//     .replace(/\s+/g, '');
-// };
 
 export async function generateStaticParams() {
   const data = await getSoldArtworks();
