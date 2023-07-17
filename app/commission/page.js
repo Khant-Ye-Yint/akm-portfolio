@@ -1,7 +1,11 @@
 import Card from './Card';
 
 import { getCommision } from '../util/data';
-export const revalidate = 60;
+
+export const revalidate = 30;
+export const metadata = {
+  title: 'z3uzy | Commision',
+};
 
 const Comission = async () => {
   const commisionData = await getCommision();

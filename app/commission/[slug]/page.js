@@ -5,7 +5,7 @@ import TabContainer from '../TabContainer';
 export const dynamicParams = false;
 export const revalidate = 30;
 export const metadata = {
-  title: 'Aung Khant Maw | Commission',
+  title: 'z3uzy | Commission',
 };
 
 const camelCase = (str) => {

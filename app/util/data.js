@@ -61,10 +61,20 @@ const getSoldArtworksByName = async (name) => {
   return res.items;
 };
 
+const getContact = async () => {
+  const res = await client.getEntries({
+    content_type: 'contact',
+    order: 'sys.createdAt',
+  });
+
+  return res.items;
+};
+
 export {
   getGallery,
   getAbout,
   getCommision,
+  getContact,
   getSpecificCommision,
   getSoldArtworks,
   getSoldArtworksByName,

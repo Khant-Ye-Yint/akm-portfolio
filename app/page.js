@@ -3,7 +3,7 @@ import TabContainer from './components/TabContainer';
 
 export const revalidate = 30;
 export const metadata = {
-  title: 'Aung Khant Maw',
+  title: 'z3uzy',
 };
 
 const Home = async () => {

@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import Logo from '../../public/images/logo.png';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -9,9 +11,18 @@ const Navbar = () => {
 
   return (
     <main className="container flex flex-col items-center justify-start w-full py-5 space-y-4 md:py-10 md:space-y-7 lg:space-y-12">
-      <h1 className="text-4xl font-bold text-center font-dosis">
-        Aung Khant Maw
-      </h1>
+      <div className="relative h-[10vh] w-full">
+        <Image
+          src={Logo}
+          alt="Logo"
+          priority
+          fill
+          sizes="40vw"
+          objectFit="contain"
+          objectPosition="center"
+        />
+      </div>
+
       <div className="flex flex-row items-center justify-center space-x-4 text-black md:space-x-10 lg:space-x-14 md:text-lg">
         <Link href="/">
           <nav className={`nav-item ${pathname == '/' && 'text-primary'}`}>
@@ -39,13 +50,13 @@ const Navbar = () => {
             contact
           </nav>
         </Link>
-        <Link href="/sold-artworks">
+        <Link href="/purchased">
           <nav
             className={`nav-item text-center ${
-              pathname.includes('/sold-artworks') && 'text-primary'
+              pathname.includes('/purchased') && 'text-primary'
             }`}
           >
-            sold-artworks
+            purchased
           </nav>
         </Link>
       </div>

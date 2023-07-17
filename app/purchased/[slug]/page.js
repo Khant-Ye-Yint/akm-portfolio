@@ -4,6 +4,9 @@ import moment from 'moment';
 
 export const dynamicParams = false;
 export const revalidate = 30;
+export const metadata = {
+  title: 'z3uzy | Purchased',
+};
 
 const camelCase = (str) => {
   return str
