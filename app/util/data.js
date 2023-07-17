@@ -51,14 +51,10 @@ const getSoldArtworks = async () => {
   return res.items;
 };
 
-const getSoldArtworksByName = async (name) => {
-  const res = await client.getEntries({
-    content_type: 'soldArtworks',
-    order: 'sys.createdAt',
-    'fields.name': name,
-  });
+const getSoldArtworksById = async (id) => {
+  const res = await client.getEntry(id);
 
-  return res.items;
+  return res.fields;
 };
 
 const getContact = async () => {
@@ -77,5 +73,5 @@ export {
   getContact,
   getSpecificCommision,
   getSoldArtworks,
-  getSoldArtworksByName,
+  getSoldArtworksById,
 };

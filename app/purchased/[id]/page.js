@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getSoldArtworks, getSoldArtworksByName } from '../../util/data';
+import { getSoldArtworks, getSoldArtworksById } from '../../util/data';
 import moment from 'moment';
 
 export const dynamicParams = false;
@@ -39,12 +39,13 @@ const toSentence = (str) => {
 };
 
 const Details = async ({ params }) => {
-  const { slug } = params;
-  const name = toSentence(slug);
+  const { id } = params;
 
-  const data = await getSoldArtworksByName(name);
+  const data = await getSoldArtworksById(id);
+  console.log(data);
 
-  const date = moment(data[0].fields.date).format('MM-DD-YYYY');
+  const name = toSentence(data.name);
+  const date = moment(data.date).format('MM-DD-YYYY');
 
   return (
     <main className="container flex-1">
@@ -54,7 +55,7 @@ const Details = async ({ params }) => {
       <div className="flex flex-col items-center justify-center w-full my-10 space-y-5">
         <Image
           priority
-          src={`http:${data[0].fields.image.fields.file.url}`}
+          src={`http:${data.image.fields.file.url}`}
           alt="image"
           style={imageStyle}
           width={350}
@@ -66,9 +67,9 @@ const Details = async ({ params }) => {
           <span>Date -</span>
           <span className="text-primary">{date}</span>
           <span>Price -</span>
-          <span className="text-primary">{data[0].fields.price}</span>
+          <span className="text-primary">{data.price}</span>
           <span>Client -</span>
-          <span className="text-primary">{data[0].fields.client}</span>
+          <span className="text-primary">{data.client}</span>
         </div>
       </div>
     </main>

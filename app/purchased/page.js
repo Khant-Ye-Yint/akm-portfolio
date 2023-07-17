@@ -17,6 +17,7 @@ const camelCase = (str) => {
 
 const About = async () => {
   const data = await getSoldArtworks();
+  console.log(data);
 
   return (
     <main className="container flex-1">
@@ -27,7 +28,7 @@ const About = async () => {
       <div className="grid w-full grid-cols-2 gap-4 mt-5 lg:mt-10 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
         {data.map((img, index) => {
           return (
-            <Link key={index} href={`purchased/${camelCase(img.fields.name)}`}>
+            <Link key={index} href={`purchased/${camelCase(img.sys.id)}`}>
               <div className="h-[250px] md:h-[350px] lg:h-[400px] relative rounded-lg overflow-hidden hover:grayscale transition duration-1000 ease-out cursor-pointer">
                 <Image
                   src={`http:${img.fields.image.fields.file.url}`}
