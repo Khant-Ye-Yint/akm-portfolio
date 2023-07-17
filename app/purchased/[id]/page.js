@@ -8,19 +8,19 @@ export const metadata = {
   title: 'z3uzy | Purchased',
 };
 
-const camelCase = (str) => {
-  return str
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-      return index == 0 ? word.toLowerCase() : word.toUpperCase();
-    })
-    .replace(/\s+/g, '');
-};
+// const camelCase = (str) => {
+//   return str
+//     .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+//       return index == 0 ? word.toLowerCase() : word.toUpperCase();
+//     })
+//     .replace(/\s+/g, '');
+// };
 
 export async function generateStaticParams() {
   const data = await getSoldArtworks();
 
   return data.map((chunk) => ({
-    slug: camelCase(chunk.fields.name),
+    id: chunk.sys.id,
   }));
 }
 
@@ -42,7 +42,6 @@ const Details = async ({ params }) => {
   const { id } = params;
 
   const data = await getSoldArtworksById(id);
-  console.log(data);
 
   const name = toSentence(data.name);
   const date = moment(data.date).format('MM-DD-YYYY');
